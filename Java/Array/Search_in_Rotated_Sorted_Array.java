@@ -34,9 +34,9 @@
 // All values of nums are unique.
 // nums is an ascending array that is possibly rotated.
 // -104 <= target <= 104
-import java.util.*;
 
-static class Solution {
+public class  Search_in_Rotated_Sorted_Array{
+    static class Solution {
         public int search(int[] nums, int target) {
             int low = 0, high = nums.length - 1;
 
@@ -64,13 +64,14 @@ static class Solution {
 
             return -1;
         }
-}
+    }
 
-public static void main(String[] args) {
+    public static void main(String[] args) {
         Solution sol = new Solution();
         int[] nums = {4, 5, 6, 7, 0, 1, 2};
         int target = 0;
         int result = sol.search(nums, target);
         System.out.println("Index of target: " + result);
+    }
 }
 

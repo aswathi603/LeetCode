@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Search_in_Rotated_Sorted_Array",
+            "request": "launch",
+            "mainClass": "Search_in_Rotated_Sorted_Array",
+            "projectName": "LeetCode_867e6f8e"
+        },
+        {
+            "type": "java",
             "name": "SymmetricCounter",
             "request": "launch",
             "mainClass": "Java.Math.SymmetricCounter",

@@ -46,15 +46,16 @@ public class RabbitsInForest {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of elements: ");
-        int n = sc.nextInt();
-        int[] answers = new int[n];
-        System.out.println("Enter the answers array:");
-        for (int i = 0; i < n; i++) {
-            answers[i] = sc.nextInt();
-        }
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter number of elements: ");
+            int n = sc.nextInt();
+            int[] answers = new int[n];
+            System.out.println("Enter the answers array:");
+            for (int i = 0; i < n; i++) {
+                answers[i] = sc.nextInt();
+            }
 
-        System.out.println("Minimum number of rabbits in the forest: " + numRabbits(answers));
+            System.out.println("Minimum number of rabbits in the forest: " + numRabbits(answers));
+        }
     }
 }

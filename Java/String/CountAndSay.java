@@ -73,7 +73,7 @@ class Solution {
             System.out.print(extracted());
             int n = sc.nextInt();
 
-            Solution sol = new Solution();
+            CountHiddenSequences sol = new CountHiddenSequences();
             String result = sol.countAndSay(n);
             System.out.println("The " + n + "th term in the Count and Say sequence is: " + result);
         }

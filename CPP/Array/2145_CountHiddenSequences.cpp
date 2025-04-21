@@ -1,0 +1,86 @@
+// # 2145. Count the Hidden Sequences
+// # Solved
+// # Medium
+
+// # You are given a 0-indexed array of n integers differences, which describes the differences between each pair of consecutive integers of a hidden sequence of length (n + 1). More formally, call the hidden sequence hidden, then we have that differences[i] = hidden[i + 1] - hidden[i].
+
+// # You are further given two integers lower and upper that describe the inclusive range of values [lower, upper] that the hidden sequence can contain.
+
+// # For example, given differences = [1, -3, 4], lower = 1, upper = 6, the hidden sequence is a sequence of length 4 whose elements are in between 1 and 6 (inclusive).
+// # [3, 4, 1, 5] and [4, 5, 2, 6] are possible hidden sequences.
+// # [5, 6, 3, 7] is not possible since it contains an element greater than 6.
+// # [1, 2, 3, 4] is not possible since the differences are not correct.
+// # Return the number of possible hidden sequences there are. If there are no possible sequences, return 0.
+
+ 
+
+// # Example 1:
+
+// # Input: differences = [1,-3,4], lower = 1, upper = 6
+// # Output: 2
+// # Explanation: The possible hidden sequences are:
+// # - [3, 4, 1, 5]
+// # - [4, 5, 2, 6]
+// # Thus, we return 2.
+// # Example 2:
+
+// # Input: differences = [3,-4,5,1,-2], lower = -4, upper = 5
+// # Output: 4
+// # Explanation: The possible hidden sequences are:
+// # - [-3, 0, -4, 1, 2, 0]
+// # - [-2, 1, -3, 2, 3, 1]
+// # - [-1, 2, -2, 3, 4, 2]
+// # - [0, 3, -1, 4, 5, 3]
+// # Thus, we return 4.
+// # Example 3:
+
+// # Input: differences = [4,-7,2], lower = 3, upper = 6
+// # Output: 0
+// # Explanation: There are no possible hidden sequences. Thus, we return 0.
+ 
+
+// # Constraints:
+
+// # n == differences.length
+// # 1 <= n <= 105
+// # -105 <= differences[i] <= 105
+// # -105 <= lower <= upper <= 105
+
+// File: solution.cpp
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int numberOfArrays(vector<int>& differences, int lower, int upper) {
+    long long prefix = 0, minPrefix = 0, maxPrefix = 0;
+
+    for (int diff : differences) {
+        prefix += diff;
+        minPrefix = min(minPrefix, prefix);
+        maxPrefix = max(maxPrefix, prefix);
+    }
+
+    long long range = upper - lower;
+    long long needed = maxPrefix - minPrefix;
+
+    if (needed > range) return 0;
+    return (int)(range - needed + 1);
+}
+
+int main() {
+    vector<int> differences1 = {1, -3, 4};
+    int lower1 = 1, upper1 = 6;
+    cout << "Output: " << numberOfArrays(differences1, lower1, upper1) << endl;
+
+    vector<int> differences2 = {3, -4, 5, 1, -2};
+    int lower2 = -4, upper2 = 5;
+    cout << "Output: " << numberOfArrays(differences2, lower2, upper2) << endl;
+
+    vector<int> differences3 = {4, -7, 2};
+    int lower3 = 3, upper3 = 6;
+    cout << "Output: " << numberOfArrays(differences3, lower3, upper3) << endl;
+
+    return 0;
+}

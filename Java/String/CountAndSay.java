@@ -69,12 +69,17 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the value of n: ");
-        int n = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print(extracted());
+            int n = sc.nextInt();
 
-        Solution sol = new Solution();
-        String result = sol.countAndSay(n);
-        System.out.println("The " + n + "th term in the Count and Say sequence is: " + result);
+            CountHiddenSequences sol = new CountHiddenSequences();
+            String result = sol.countAndSay(n);
+            System.out.println("The " + n + "th term in the Count and Say sequence is: " + result);
+        }
     }
-}
+
+    private static String extracted() {
+        return "Enter the value of n: ";
+    }
+};

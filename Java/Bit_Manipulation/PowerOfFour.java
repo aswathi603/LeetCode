@@ -34,7 +34,7 @@ Follow up: Could you solve it without loops/recursion?
 
  */
 
-class Solution {
+class PowerOfFour {
     public boolean isPowerOfFour(int n) {
         if(n<=0){
             return false;

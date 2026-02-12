@@ -55,30 +55,23 @@ Constraints:
 s consists of parentheses only '()[]{}'.
 '''
 
-from git import List
+from typing import List
 
-class Solution {
-public:
-    bool isValid(string s) {
-        stack<char> st;
-        unordered_map<char, char> mapping = {
-            {')', '('},
-            {'}', '{'},
-            {']', '['}
-        };
-
-        for (char c : s) {
-            if (mapping.find(c) != mapping.end()) {
-                char topElement = st.empty() ? '#' : st.top();
-                st.pop();
-                if (mapping[c] != topElement) {
-                    return false;
-                }
-            } else {
-                st.push(c);
-            }
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        mapping = {
+            ')': '(',
+            '}': '{',
+            ']': '['
         }
 
-        return st.empty();      
-    }
-};
+        for c in s:
+            if c in mapping:
+                top_element = stack.pop() if stack else '#'
+                if mapping[c] != top_element:
+                    return False
+            else:
+                stack.append(c)
+
+        return len(stack) == 0

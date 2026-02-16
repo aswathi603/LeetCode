@@ -42,26 +42,20 @@ Constraints:
 
 
 # Solution 1: Using Max Heap
-
 import heapq
 from git import List
 
 class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
+    def lastStoneWeight(self, stones):
+        # Convert to max heap using negatives
+        heap = [-s for s in stones]
+        heapq.heapify(heap)
 
-        n = len(stones)
-        res = [1] * n
+        while len(heap) > 1:
+            y = -heapq.heappop(heap)  # largest
+            x = -heapq.heappop(heap)  # second largest
 
-        # Prefix product
-        prefix = 1
-        for i in range(n):
-            res[i] = prefix
-            prefix *= stones[i]
+            if y != x:
+                heapq.heappush(heap, -(y - x))
 
-        # Suffix product
-        suffix = 1
-        for i in range(n - 1, -1, -1):
-            res[i] *= suffix
-            suffix *= stones[i]
-
-        return res
+        return -heap[0] if heap else 0

@@ -31,12 +31,12 @@ Auxiliary Space: O(1)
 '''
 
 from typing import Optional
-'''
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-'''
+
 
 class Solution:
     def rotate(self, head, k):

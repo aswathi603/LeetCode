@@ -31,12 +31,12 @@ Auxiliary Space: O(1)
 
 from typing import Optional
 
-"""
+
 class Node:
     def __init__(self, val):
         self.data = val
         self.next = None
-"""
+
 
 class Solution:
     def reverseList(self, head):

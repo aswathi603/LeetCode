@@ -53,8 +53,6 @@ At most 3000 calls will be made to enQueue, deQueue, Front, Rear, isEmpty, and i
 
 '''
 
-from tomlkit import value
-
 
 class MyCircularQueue:
 
@@ -101,6 +99,8 @@ class MyCircularQueue:
 
 
 # Your MyCircularQueue object will be instantiated and called as such:
+k = 3
+value = 1
 obj = MyCircularQueue(k)
 param_1 = obj.enQueue(value)
 param_2 = obj.deQueue()
